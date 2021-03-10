@@ -9,12 +9,18 @@
  * file that was distributed with this source code.
 */
 
-import Emitter from 'emittery'
-import { stringify } from 'query-string'
-import wsp from '@adonisjs/websocket-packet'
-import debug from '../Debug/index.js'
-import Socket from '../Socket/index.js'
-import JsonEncoder from '../JsonEncoder/index.js'
+// const Emitter = require( 'emittery'
+// const { stringify } = require( 'query-string'
+// const wsp = require( '@adonisjs/websocket-packet'
+// const debug = require( '../Debug/index.js'
+// const Socket = require( '../Socket/index.js'
+// const JsonEncoder = require( '../JsonEncoder/index.js'
+const Emitter = require('emittery')
+const { stringify } = require('query-string')
+const wsp = require('@adonisjs/websocket-packet')
+const debug = require('../Debug/index.js')
+const Socket = require('../Socket/index.js')
+const JsonEncoder = require('../JsonEncoder/index.js')
 
 /**
  * Returns the ws protocol based upon HTTP or HTTPS
@@ -34,7 +40,7 @@ const wsProtocol = (typeof window !== 'undefined' && window.location.protocol ==
  * @param {String} url
  * @param {Object} options
  */
-export default class Connection extends Emitter {
+class Connection extends Emitter {
   constructor (url, options) {
     super()
 
@@ -118,7 +124,7 @@ export default class Connection extends Emitter {
     this.subscriptions = {}
 
     /**
-     * Handler called when `close` is emitted from the
+     * Handler called when `close` is emitted = require( the
      * subscription
      */
     this.removeSubscription = ({ topic }) => {
@@ -306,7 +312,7 @@ export default class Connection extends Emitter {
    */
   _onClose (event) {
     if (process.env.NODE_ENV !== 'production') {
-      debug('closing from %s state', this._connectionState)
+      debug('closing = require( %s state', this._connectionState)
     }
 
     this._cleanup()
@@ -797,3 +803,5 @@ export default class Connection extends Emitter {
     this.ws.close()
   }
 }
+
+module.exports = Connection;

@@ -9,8 +9,14 @@
  * file that was distributed with this source code.
 */
 
-import Connection from './src/Connection/index.js'
+// import Connection from './src/Connection/index.js'
+const Connection = require('./src/Connection/index.js');
 
-export default function (url, options) {
+// export default function (url, options) {
+//   return new Connection(url, options)
+// }
+
+module.exports = function (url, options) {
   return new Connection(url, options)
 }
+

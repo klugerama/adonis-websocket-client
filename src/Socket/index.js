@@ -9,9 +9,9 @@
  * file that was distributed with this source code.
 */
 
-import Emitter from 'emittery'
-import wsp from '@adonisjs/websocket-packet'
-import debug from '../Debug/index.js'
+const Emitter = require('emittery');
+const wsp = require('@adonisjs/websocket-packet');
+const debug = require('../Debug/index.js');
 
 /**
  * Socket class holds details for a single subscription. The instance
@@ -20,7 +20,7 @@ import debug from '../Debug/index.js'
  *
  * @class Socket
  */
-export default class Socket {
+class Socket {
   constructor (topic, connection) {
     this.topic = topic
     this.connection = connection
@@ -250,3 +250,5 @@ export default class Socket {
     this.leaveAck()
   }
 }
+
+module.exports = Socket;

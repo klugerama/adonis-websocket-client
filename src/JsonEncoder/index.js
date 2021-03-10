@@ -12,7 +12,7 @@
 /**
  * The default encoder to encode packets.
  */
-export default {
+module.exports = {
   name: 'json',
   /**
    * Encode a value by stringifying it
