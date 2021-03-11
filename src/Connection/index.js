@@ -600,8 +600,7 @@ class Connection extends Emitter {
     this.ws.on("error", (event) => this._onError(event))
     this.ws.on("open", (event) => this._onOpen(event))
     this.ws.on("message", (event) => this._onMessage(event))
-    this.ws.connect();
-    
+
     return this
   }
 

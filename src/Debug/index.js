@@ -9,11 +9,10 @@
  * file that was distributed with this source code.
 */
 
-if (process.env.NODE_ENV !== 'production') {
-  // const Debug = require('debug')
-  // Debug.enable('adonis:*')
-  // module.exports = Debug('adonis:websocket')
-  module.exports = function () {}
+if (process.env.app.logger.level !== 'debug') {
+  const Debug = require('debug')
+  Debug.enable('adonis:*')
+  module.exports = Debug('adonis:websocket')
 } else {
   module.exports = function () {}
 }
