@@ -21,6 +21,7 @@ const wsp = require('@adonisjs/websocket-packet')
 const debug = require('../Debug/index.js')
 const Socket = require('../Socket/index.js')
 const JsonEncoder = require('../JsonEncoder/index.js')
+const WebSocket = require('ws');
 
 /**
  * Returns the ws protocol based upon HTTP or HTTPS
@@ -595,10 +596,10 @@ class Connection extends Emitter {
     }
 
     this.ws = new WebSocket(url)
-    this.ws.onclose = (event) => this._onClose(event)
-    this.ws.onerror = (event) => this._onError(event)
-    this.ws.onopen = (event) => this._onOpen(event)
-    this.ws.onmessage = (event) => this._onMessage(event)
+    this.ws.on("close", (event) => this._onClose(event))
+    this.ws.on("error", (event) => this._onError(event))
+    this.ws.on("open", (event) => this._onOpen(event))
+    this.ws.on("message", (event) => this._onMessage(event))
 
     return this
   }
@@ -613,7 +614,7 @@ class Connection extends Emitter {
    * @return {void}
    */
   write (payload) {
-    if (this.ws.readyState !== WebSocket.OPEN) {
+    if (this.ws.readyState !== this.ws.OPEN) {
       if (process.env.NODE_ENV !== 'production') {
         debug('connection is not in open state, current state %s', this.ws.readyState)
       }
