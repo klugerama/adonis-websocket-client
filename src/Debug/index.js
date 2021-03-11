@@ -10,9 +10,10 @@
 */
 
 if (process.env.NODE_ENV !== 'production') {
-  const Debug = require('debug')
-  Debug.enable('adonis:*')
-  module.exports = Debug('adonis:websocket')
+  // const Debug = require('debug')
+  // Debug.enable('adonis:*')
+  // module.exports = Debug('adonis:websocket')
+  module.exports = function () {}
 } else {
   module.exports = function () {}
 }
