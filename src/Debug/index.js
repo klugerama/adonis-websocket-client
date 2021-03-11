@@ -11,7 +11,10 @@
 
 if (process.env.NODE_ENV !== 'production') {
   const Debug = require('debug')
-  Debug.enable('adonis:*')
+  Debug.enable('adonis:websocket')
+  Debug.enable('adonis:request')
+  Debug.enable('adonis:bodyparser')
+  Debug.enable('adonis:framework')
   module.exports = Debug('adonis:websocket')
 } else {
   module.exports = function () {}
