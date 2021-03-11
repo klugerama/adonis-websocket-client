@@ -9,7 +9,7 @@
  * file that was distributed with this source code.
 */
 
-if (process.env.app && process.env.app.logger.level !== 'debug') {
+if (process.env.app && process.env.app.logger.level === 'debug') {
   const Debug = require('debug')
   Debug.enable('adonis:*')
   module.exports = Debug('adonis:websocket')
