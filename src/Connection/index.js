@@ -594,7 +594,7 @@ class Connection extends Emitter {
       debug('creating socket connection on %s url', url)
     }
 
-    this.ws = new window.WebSocket(url)
+    this.ws = new WebSocket(url)
     this.ws.onclose = (event) => this._onClose(event)
     this.ws.onerror = (event) => this._onError(event)
     this.ws.onopen = (event) => this._onOpen(event)
@@ -613,7 +613,7 @@ class Connection extends Emitter {
    * @return {void}
    */
   write (payload) {
-    if (this.ws.readyState !== window.WebSocket.OPEN) {
+    if (this.ws.readyState !== WebSocket.OPEN) {
       if (process.env.NODE_ENV !== 'production') {
         debug('connection is not in open state, current state %s', this.ws.readyState)
       }
