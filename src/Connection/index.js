@@ -345,7 +345,7 @@ class Connection extends Emitter {
    * @private
    */
   _onMessage (event) {
-    this.options.encoder.decode(event.data, (decodeError, packet) => {
+    this.options.encoder.decode((event.data ? event.data : event), (decodeError, packet) => {
       if (decodeError) {
         if (process.env.NODE_ENV !== 'production') {
           debug('packet dropped, decode error %o', decodeError)
