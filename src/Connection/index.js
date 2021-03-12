@@ -595,7 +595,7 @@ class Connection extends Emitter {
       debug('creating socket connection on %s url', url)
     }
 
-    this.ws = new WebSocket(url)
+    this.ws = new WebSocket(url, this.options)
     this.ws.on("close", (event) => this._onClose(event))
     this.ws.on("error", (event) => this._onError(event))
     this.ws.on("open", (event) => this._onOpen(event))
