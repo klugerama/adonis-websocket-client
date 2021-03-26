@@ -11,7 +11,8 @@
 
 if (process.env.NODE_ENV !== 'production') {
   const Debug = require('debug')
-  Debug.enable('adonis:websocket,adonis:request,adonis:bodyparser,adonis:framework')
+  // Debug.enable('adonis:websocket,adonis:request,adonis:bodyparser,adonis:framework,adonis:auth,adonis:ignitor')
+  // Debug.enable('adonis:*')
   module.exports = Debug('adonis:websocket')
 } else {
   module.exports = function () {}
