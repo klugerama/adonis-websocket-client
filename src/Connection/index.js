@@ -58,6 +58,7 @@ class Connection extends Emitter {
       reconnectionAttempts: 10,
       reconnectionDelay: 1000,
       query: null,
+      maxReconnectionInterval: 60000,
       encoder: JsonEncoder
     }, options)
 
@@ -297,7 +298,7 @@ class Connection extends Emitter {
     setTimeout(() => {
       this._connectionState = 'reconnect'
       this.connect()
-    }, this.options.reconnectionDelay * this._reconnectionAttempts)
+    }, Math.min(this.options.reconnectionDelay * this._reconnectionAttempts, this.options.maxReconnectionInterval))
   }
 
   /**
