@@ -458,7 +458,10 @@ class Connection extends Emitter {
      * client is awake
      */
     this._pingTimer = setInterval(() => {
-      this.sendPacket(wsp.pingPacket())
+      this._subscriptionsIterator((subscription) => {
+        let pingPacket = wsp.pingPacket();
+        pingPacket.d = {topic:subscription.topic};
+        this.sendPacket(pingPacket);
     }, packet.d.clientInterval)
 
     /**
