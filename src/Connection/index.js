@@ -462,6 +462,7 @@ class Connection extends Emitter {
         let pingPacket = wsp.pingPacket();
         pingPacket.d = {topic:subscription.topic};
         this.sendPacket(pingPacket);
+      });
     }, packet.d.clientInterval)
 
     /**
